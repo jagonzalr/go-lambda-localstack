@@ -1,0 +1,29 @@
+{
+  "name": "go-lambda-localstack",
+  "version": "1.0.0",
+  "description": "Setup and run Go Lambda locally with LocalStack and Serverless Framework",
+  "main": "index.js",
+  "scripts": {
+    "build": "sh build.sh",
+    "deploy:local": "serverless deploy --stage local",
+    "start": "npm run build && npm run deploy:local && npm run watch",
+    "watch": "nodemon --watch src -e go --exec npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jagonzalr/go-lambda-localstack.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jagonzalr/go-lambda-localstack/issues"
+  },
+  "homepage": "https://github.com/jagonzalr/go-lambda-localstack#readme",
+  "devDependencies": {
+    "concurrently": "^6.2.2",
+    "nodemon": "^2.0.13",
+    "serverless": "^2.60.0",
+    "serverless-localstack": "^0.4.35"
+  }
+}

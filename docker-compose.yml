@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  localstack:
+    image: localstack/localstack:latest
+    environment:
+      - EDGE_PORT=4566
+      - LAMBDA_EXECUTOR=local
+      - LAMBDA_REMOTE_DOCKER=0
+      - SERVICES=lambda,dynamodb,cloudformation,s3,sts,iam,apigateway,ecr
+      - HOST_TMP_FOLDER="${TMPDIR:-/tmp}/localstack"
+      - DEFAULT_REGION=us-east-1
+      - DEBUG=1
+    ports:
+      - '4566-4583:4566-4583'
+    volumes:
+      - '${TMPDIR:-/tmp/localstack}:/tmp/localstack'
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      - '/Users/jagonzalr/Development/personal/go-lambda-localstack/bin/hello:/Users/jagonzalr/Development/personal/go-lambda-localstack/bin/hello'
